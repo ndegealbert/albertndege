@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
-import emailjs from "emailjs-com";
 
 import {
   SectionContainer,
@@ -9,8 +8,6 @@ import {
   StyledHeader,
 } from "../../../common";
 import { StyledForm, StyledInput } from "./styles";
-
-emailjs.init("PGvsMN0_gjAsR78JM");
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,22 +27,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs
-      .send("service_kx37emj", "template_kybnf5g", {
-        name: formData.name,
-        email: formData.email,
-        signup_date: formData.message,
-        from_name: formData.name,
-        reply_to: formData.message,
-      })
-      .then((result) => {
-        sentSent(true);
-        console.log("Email successfully sent!", result.text);
-      })
-      .catch((error) => {
-        console.error("There was an error sending the email:", error.text);
-      });
   };
 
   return (
