@@ -2,7 +2,6 @@ import React from "react";
 import { Grid } from "semantic-ui-react";
 import {
   IoSocialJavascript,
-  IoSocialCss3,
   IoSocialNodejs,
   IoSocialHackernews,
   IoSocialPython,

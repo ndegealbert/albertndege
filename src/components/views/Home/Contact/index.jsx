@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
-
 import {
   SectionContainer,
   StyledH1,
@@ -8,6 +7,7 @@ import {
   StyledHeader,
 } from "../../../common";
 import { StyledForm, StyledInput } from "./styles";
+import { IoSocialLinkedin, IoSocialTwitter } from "react-icons/lib/io";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -72,6 +72,38 @@ const Contact = () => {
         <Button secondary type="submit">
           Send
         </Button>
+        <div>
+          <ul
+            style={{
+              listStyleType: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <li style={{ color: "#0077b5", cursor: "pointer" }}>
+              <a
+                href="https://www.linkedin.com/in/ndege-albert-136178155/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                <IoSocialLinkedin size="30" />
+              </a>
+            </li>
+            <li style={{ color: "#1da1f2", cursor: "pointer" }}>
+              <a
+                href="https://x.com/albertndege_"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                <IoSocialTwitter size="30" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </StyledForm>
     </SectionContainer>
   );
