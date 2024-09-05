@@ -16,7 +16,7 @@ const Contact = () => {
     message: "",
   });
 
-  const [sent, sentSent] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -27,6 +27,27 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+
+    // Send form data via Formspree
+    fetch("https://formspree.io/f/mldrvndp", {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setSent(true);
+          setFormData({ name: "", email: "", message: "" });
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch(() => {
+        alert("There was an error. Please try again.");
+      });
   };
 
   return (
@@ -68,7 +89,9 @@ const Contact = () => {
           onChange={handleChange}
           required
         />
-        <p> {sent ? "Email successfully sent! Will get back " : ""}</p>
+        <p>
+          {sent ? "Email successfully sent! Will get back to you shortly." : ""}
+        </p>
         <Button secondary type="submit">
           Send
         </Button>
